@@ -8,25 +8,15 @@
 // La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
-// * Salvo il bottone in variabile
-// ? lavorando sul click, allora tutto si svilupperà nel bottone, tranne le funzioni da richiamare
 const playButton = document.getElementById('start_btn');
 
-playButton.addEventListener('click', function () {  // TODO Lo useremo alla fine per avere tutto all'avvio del documento per ora!
+playButton.addEventListener('click', function () { 
 
     // Richiamo il wrapper per poter inserir le cose dentro successivamente in modo più comodo
     const gameWrapper = document.querySelector('.grid_wrapper');
     gameWrapper.innerHTML = '';
 
-
     let difficultySelector = document.getElementById('difficulty_selector');
-
-    // ! Bonus SOTTO LE FUNZIONI!
-    // * Creo un value selector su html con le varie difficoltà
-    // * recupero il value attributo al selettore su js, come lo modifico?
-    // ? assegno a difficulty selector il value assegnato
-    // ? in base al value, cambio con un if i valori al for
-    // ? creo delle nuove classi box da assegnare con le varie differenze
 
     difficultySelector = parseInt(difficultySelector.value);
     if (isNaN(difficultySelector)) {
@@ -36,29 +26,13 @@ playButton.addEventListener('click', function () {  // TODO Lo useremo alla fine
     let diffForIteration = difficultyIteration(difficultySelector);
     let diffClassChange = difficultyClassChange(difficultySelector);
 
-    // * creo le 100 caselle dinamicamente su js:
-    //  ? creo un for per stampare le 100 caselle
-
     let numbArray = [];
     console.log(numbArray);
     let bomb = [];
     console.log(bomb);
 
-    function uniqueRandNum(arrayList, min, max){
-
-        let randomNum;
-        let isNumValid = false;
-
-        while (isNumValid === false){
-            randomNum = Math.floor(Math.random() * (max - min) + min);
-
-            if (!arrayList.includes(randomNum)) {
-                isNumValid = true;
-            }
-        }
-        return randomNum;
-    }
-
+    // numero delle bombe, richiamiamo il numero per il numero di iterazioni che vogliamo
+        // ? lo pushamo nell'array bombe
     for (let index = 0; index < 16; index++) {
 
         let randomNumberForArray =  uniqueRandNum(bomb, 1, diffForIteration);
@@ -70,8 +44,6 @@ playButton.addEventListener('click', function () {  // TODO Lo useremo alla fine
 
         let gameGenerator = boxesGenerator(diffClassChange, 'borders');
         gameWrapper.append(gameGenerator);
-
-        // innerHtmlOnClick(gameGenerator);
         
         let boxesValue = parseInt(i+1);
         gameGenerator.innerHTML = boxesValue;
@@ -82,10 +54,6 @@ playButton.addEventListener('click', function () {  // TODO Lo useremo alla fine
     }
 })
 
-
-
-
-// ? la modulazione delle 100 caselle la assegnerò ad una funzione richiamandola poi nel for
 function boxesGenerator(classToAdd, classToAddTwo) {
     let box = document.createElement('div');
     box.classList.add(classToAdd, classToAddTwo);
@@ -107,16 +75,6 @@ function activateBoxes(elementPressed, listArray, elementToCompare) {
     })  
 
 }
-
-// function innerHtmlOnClick(element) {
-//     // ? al click, mi darà anche il log con il numero della casella cliccata
-//     let inner = element.innerHTML;
-//     element.addEventListener('click', function () {
-//         if(inner === numbArray)
-//         console.log(inner);
-//     })
-// }
-
 
 // ! Bonus
 function difficultyIteration(valueSelected) {
@@ -144,12 +102,18 @@ function difficultyClassChange(valueSelected) {
     }
 }
 
+// *Giorno 2, creazione di numero randomico unico 
+function uniqueRandNum(arrayList, min, max){
 
-  // gameGenerator.addEventListener('click', function () {
-        //     if (!(bomb.includes(boxesValue))){
-        //         gameGenerator.classList.add('active');
-        //         console.log('1')
-        //     } else{
-        //         gameGenerator.classList.add('bomb');
-        //     }
-        // })    
+    let randomNum;
+    let isNumValid = false;
+
+    while (isNumValid === false){
+        randomNum = (Math.floor(Math.random() * max ) + min);
+
+        if (!arrayList.includes(randomNum)) {
+            isNumValid = true;
+        }
+    }
+    return randomNum;
+}
