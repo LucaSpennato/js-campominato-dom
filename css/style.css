@@ -74,3 +74,7 @@ header{
 
 /* TODO Separare le classi box e renderla unica e modificare le varianti con una 
    TODO seconda classe che ne definisce le caratteristiche spaziali */
+
+.bomb{
+    background-color: red;
+}
