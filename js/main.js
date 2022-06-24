@@ -33,7 +33,7 @@ playButton.addEventListener('click', function () {
 
     // numero delle bombe, richiamiamo il numero per il numero di iterazioni che vogliamo
         // ? lo pushamo nell'array bombe
-    for (let index = 0; index <= 16; index++) {
+    for (let index = 0; index < 16; index++) {
 
         let randomNumberForArray =  uniqueRandNum(bomb, 1, diffForIteration);
         bomb.push(randomNumberForArray);
@@ -60,7 +60,7 @@ playButton.addEventListener('click', function () {
             playButton.addEventListener('click', function(){
                 gameStopper.remove('div');
             })
-            
+
             if (!(bomb.includes(boxesValue))){
                 gameGenerator.classList.add('active'); 
                 sum = sum + 1;          
