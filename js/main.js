@@ -53,15 +53,23 @@ playButton.addEventListener('click', function () {
         // activateBoxes(gameGenerator, bomb, boxesValue);
 
         gameGenerator.addEventListener('click', function () {
+
+            let gameStopper = document.createElement('div');
+            document.querySelector('body').append(gameStopper);
+
             if (!(bomb.includes(boxesValue))){
                 gameGenerator.classList.add('active'); 
                 sum = sum + 1;
-                console.log(sum) 
+                console.log(sum);
+                if(sum === (diffForIteration - 16)){
+                    gameStopper.classList.add('game_stopper');
+                    gameStopper.innerHTML = 'Hai vinto!';
+                }
                     
             } else{
                 gameGenerator.classList.add('bomb');
-                let gameStopper = document.createElement('div');
-                document.querySelector('body').append(gameStopper);
+                
+                
                 gameStopper.classList.add('game_stopper');
                 gameStopper.innerHTML = 'Hai perso!';
                 playButton.addEventListener('click', function(){
