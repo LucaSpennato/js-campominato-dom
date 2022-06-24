@@ -46,12 +46,39 @@ playButton.addEventListener('click', function () {
         gameWrapper.append(gameGenerator);
         
         let boxesValue = parseInt(i+1);
-        gameGenerator.innerHTML = boxesValue;
+
         numbArray.push(boxesValue);
+   
+        // activateBoxes(gameGenerator, bomb, boxesValue);
+
+        gameGenerator.addEventListener('click', function () {
+            if (!(bomb.includes(boxesValue))){
+                gameGenerator.classList.add('active');
+                let sum = 1;
+                    sum = sum + sum;
+                    console.log(sum);
+            } else{
+                gameGenerator.classList.add('bomb');
+                let gameStopper = document.createElement('div');
+                document.querySelector('body').append(gameStopper);
+                gameStopper.classList.add('game_stopper');
+                gameStopper.innerHTML = 'Hai perso!';
+                playButton.addEventListener('click', function(){
+                    gameStopper.remove('div');
+                })
+                
+            }
+        })  
+
         
-        activateBoxes(gameGenerator, bomb, boxesValue);
-      
+
+        // commenta questa singola linea se vuoi far sparire i numeri
+        gameGenerator.innerHTML = boxesValue;
+
     }
+
+   
+
 })
 
 function boxesGenerator(classToAdd, classToAddTwo) {
@@ -63,18 +90,28 @@ function boxesGenerator(classToAdd, classToAddTwo) {
 // * Devo far attivare le caselle al click e cambia colore al click
 // ?  creo una classe 'attivo' su css (già creata)
 // ? creo una funzione che mi permetta al click, di cambiare la classe su js 
-function activateBoxes(elementPressed, listArray, elementToCompare) {
+// function activateBoxes(elementPressed, listArray, elementToCompare) {
 
-    elementPressed.addEventListener('click', function () {
-        if (!(listArray.includes(elementToCompare))){
-            elementPressed.classList.add('active');
-            console.log('1')
-        } else{
-            elementPressed.classList.add('bomb');
-        }
-    })  
+    
 
-}
+    
+//     elementPressed.addEventListener('click', function () {
+//         if (!(listArray.includes(elementToCompare))){
+//             elementPressed.classList.add('active');
+//             let sum = 1;
+//                 sum = sum + sum;
+//                 console.log(sum);
+//         } else{
+//             elementPressed.classList.add('bomb');
+//             let gameStopper = document.createElement('div');
+//             document.querySelector('body').append(gameStopper);
+//             gameStopper.classList.add('game_stopper');
+//             gameStopper.innerHTML = 'Hai perso!';
+            
+//         }
+//     })  
+
+// }
 
 // ! Bonus
 function difficultyIteration(valueSelected) {
