@@ -57,25 +57,23 @@ playButton.addEventListener('click', function () {
             let gameStopper = document.createElement('div');
             document.querySelector('body').append(gameStopper);
 
+            playButton.addEventListener('click', function(){
+                gameStopper.remove('div');
+            })
+            
             if (!(bomb.includes(boxesValue))){
                 gameGenerator.classList.add('active'); 
-                sum = sum + 1;
-                console.log(sum);
+                sum = sum + 1;          
                 if(sum === (diffForIteration - 16)){
                     gameStopper.classList.add('game_stopper');
-                    gameStopper.innerHTML = 'Hai vinto!';
+                    gameStopper.innerHTML = `Hai vinto! Hai totalizzato: ${sum}`;
                 }
-                    
+             
             } else{
-                gameGenerator.classList.add('bomb');
-                
-                
+                gameGenerator.classList.add('bomb');        
                 gameStopper.classList.add('game_stopper');
                 gameStopper.innerHTML = 'Hai perso!';
-                playButton.addEventListener('click', function(){
-                    gameStopper.remove('div');
-                })
-                
+  
             }
         })  
 
