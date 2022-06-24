@@ -40,6 +40,7 @@ playButton.addEventListener('click', function () {
         
     }
 
+    let sum = 1;
     for (let i = 0; i < diffForIteration; i++) {
 
         let gameGenerator = boxesGenerator(diffClassChange, 'borders');
@@ -53,10 +54,10 @@ playButton.addEventListener('click', function () {
 
         gameGenerator.addEventListener('click', function () {
             if (!(bomb.includes(boxesValue))){
-                gameGenerator.classList.add('active');
-                let sum = 1;
-                    sum = sum + sum;
-                    console.log(sum);
+                gameGenerator.classList.add('active'); 
+                sum = sum + 1;
+                console.log(sum) 
+                    
             } else{
                 gameGenerator.classList.add('bomb');
                 let gameStopper = document.createElement('div');
@@ -77,7 +78,6 @@ playButton.addEventListener('click', function () {
 
     }
 
-   
 
 })
 
