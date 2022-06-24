@@ -34,7 +34,6 @@ playButton.addEventListener('click', function () {
     // numero delle bombe, richiamiamo il numero per il numero di iterazioni che vogliamo
         // ? lo pushamo nell'array bombe
     for (let index = 0; index < 16; index++) {
-
         let randomNumberForArray =  uniqueRandNum(bomb, 1, diffForIteration);
         bomb.push(randomNumberForArray);
         
@@ -150,6 +149,10 @@ function uniqueRandNum(arrayList, min, max){
 
     let randomNum;
     let isNumValid = false;
+
+    if(max === 0){
+        max = 100;
+    }
 
     while (isNumValid === false){
         randomNum = (Math.floor(Math.random() * max ) + min);
