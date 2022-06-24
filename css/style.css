@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(3, 3, 64);
+}
+
+header{
+    padding: .8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.borders{
+    border: 2px solid whitesmoke;
+}
+
+.container_lg{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+}
+
+.grid_wrapper{
+    width: 550px;
+    height: 550px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box_easy{
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-basis: calc(100% / 10);
+}
+
+.box_medium{
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-basis: calc(100% / 9);
+}
+
+.box_difficult{
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-basis: calc(100% / 7);
+}
+
+
+
+.active{
+    background-color: cyan;
+    color: black;
+}
+
+.first_screen{
+    margin: 0 auto;
+    display: flex;
+    vertical-align: middle;
+    line-height: 550px;
+}
+
+/* TODO Separare le classi box e renderla unica e modificare le varianti con una 
+   TODO seconda classe che ne definisce le caratteristiche spaziali */
