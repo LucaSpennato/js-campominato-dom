@@ -41,8 +41,30 @@ playButton.addEventListener('click', function () {  // TODO Lo useremo alla fine
 
     let numbArray = [];
     console.log(numbArray);
-    let bomb = [1, 27, 18, 20];
+    let bomb = [];
     console.log(bomb);
+
+    function uniqueRandNum(arrayList, min, max){
+
+        let randomNum;
+        let isNumValid = false;
+
+        while (isNumValid === false){
+            randomNum = Math.floor(Math.random() * (max - min) + min);
+
+            if (!arrayList.includes(randomNum)) {
+                isNumValid = true;
+            }
+        }
+        return randomNum;
+    }
+
+    for (let index = 0; index < 16; index++) {
+
+        let randomNumberForArray =  uniqueRandNum(bomb, 1, diffForIteration);
+        bomb.push(randomNumberForArray);
+        
+    }
 
     for (let i = 0; i < diffForIteration; i++) {
 
